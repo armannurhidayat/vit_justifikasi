@@ -1,0 +1,27 @@
+<odoo>
+<data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="purchase_order_form_line_per_dept" model="ir.ui.view">
+            <field name="name">purchase_order_form_line_per_dept</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='order_line']/form/sheet/notebook" position="inside">
+                    <!-- Add your fields or attributes here -->
+                    <page string="Qty per Department">
+                        <field name="line_department_ids">
+                            <tree string="Qty per Department">
+                                <field name="request_id"/>
+                                <field name="department_id"/>
+                                <field name="warehouse_id"/>
+                                <field name="qty"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+</data>
+</odoo>

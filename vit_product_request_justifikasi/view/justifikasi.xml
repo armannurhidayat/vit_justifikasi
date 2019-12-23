@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_vit_justifikasi_tree" model="ir.ui.view">
+            <field name="name">vit_justifikasi_tree</field>
+            <field name="model">vit.justifikasi</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Justifikasi">
+                    <field name="name" />
+                    <field name="date" />
+                    <field name="no_sop" />
+                    <field name="revisi_ke" />
+                    <field name="no_urut_proses" />
+                    <field name="kebutuhan" />
+                    <field name="pr_date" />
+                    <field name="nama_kegiatan" />
+                    <field name="job_list" />
+                    <field name="referensi_dokumen_penunjang" />
+                    <field name="alasan_pertimbangan" />
+                    <field name="spesifikasi_kebutuhan" />
+                    <field name="jumlah_kebutuhan" />
+                    <field name="budget_tersedia" />
+                    <field name="estimasi_kebutuhan_budget" />
+                    <field name="waktu_penggunaan" />
+                    <field name="distribusi_penggunaan" />
+                    <field name="posisi_persediaan" />
+                    <field name="diajukan_tanggal" />
+                    <field name="diketahui_tanggal" />
+                    <field name="disetujui_tanggal" />
+                    <field name="pr_id" />
+                    <field name="responsible_id" />
+                    <field name="coa_id" />
+                    <field name="diajukan_oleh" />
+                    <field name="diketahui_oleh" />
+                    <field name="disetujui_oleh" />
+                    <field name="company_id" />
+                </tree>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_vit_justifikasi_form" model="ir.ui.view">
+            <field name="name">vit_justifikasi_form</field>
+            <field name="model">vit.justifikasi</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Justifikasi">
+                    <header>
+                        <button class="btn-success" string="Create Purchase Requisition" context="{'create_purchase_requisition':True}" name="create_purchase_requisition" type="object" />
+                        <!--button string="Confirm" type="object" name="action_confirm" states="draft" /-->
+                        <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
+                        <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
+                    </header>
+                    <sheet>
+                        <div name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Justifikasi Name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date" />
+                                <field name="no_sop" />
+                                <field name="revisi_ke" />
+                                <field name="no_urut_proses" />
+                                <field name="kebutuhan" />
+                                <field name="pr_date" />
+                                <field name="nama_kegiatan" />
+                                <field name="job_list" />
+                                <field name="referensi_dokumen_penunjang" />
+                                <field name="alasan_pertimbangan" />
+                                <field name="spesifikasi_kebutuhan" />
+                                <field name="jumlah_kebutuhan" />
+                                <field name="budget_tersedia" />
+                                <field name="estimasi_kebutuhan_budget" />
+                                <field name="waktu_penggunaan" />
+                                <field name="distribusi_penggunaan" />
+                                <field name="posisi_persediaan" />
+                                <field name="diajukan_tanggal" />
+                                <field name="diketahui_tanggal" />
+                                <field name="disetujui_tanggal" />
+                            </group>
+                            <group>
+                                <field name="pr_id" />
+                                <field name="responsible_id" />
+                                <field name="coa_id" />
+                                <field name="diajukan_oleh" />
+                                <field name="diketahui_oleh" />
+                                <field name="disetujui_oleh" />
+                                <field name="company_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_vit_justifikasi_search" model="ir.ui.view">
+            <field name="name">vit_justifikasi</field>
+            <field name="model">vit.justifikasi</field>
+            <field name="arch" type="xml">
+                <search string="Justifikasi">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Date" name="filter_by_date" domain="[('date','=','')]" />
+                    <filter string="No sop" name="filter_by_no_sop" domain="[('no_sop','=','')]" />
+                    <filter string="Revisi ke" name="filter_by_revisi_ke" domain="[('revisi_ke','=','')]" />
+                    <filter string="No urut proses" name="filter_by_no_urut_proses" domain="[('no_urut_proses','=','')]" />
+                    <filter string="Kebutuhan" name="filter_by_kebutuhan" domain="[('kebutuhan','=','')]" />
+                    <filter string="Pr date" name="filter_by_pr_date" domain="[('pr_date','=','')]" />
+                    <filter string="Nama kegiatan" name="filter_by_nama_kegiatan" domain="[('nama_kegiatan','=','')]" />
+                    <filter string="Job list" name="filter_by_job_list" domain="[('job_list','=','')]" />
+                    <filter string="Referensi dokumen penunjang" name="filter_by_referensi_dokumen_penunjang" domain="[('referensi_dokumen_penunjang','=','')]" />
+                    <filter string="Alasan pertimbangan" name="filter_by_alasan_pertimbangan" domain="[('alasan_pertimbangan','=','')]" />
+                    <filter string="Spesifikasi kebutuhan" name="filter_by_spesifikasi_kebutuhan" domain="[('spesifikasi_kebutuhan','=','')]" />
+                    <filter string="Jumlah kebutuhan" name="filter_by_jumlah_kebutuhan" domain="[('jumlah_kebutuhan','=','')]" />
+                    <filter string="Budget tersedia" name="filter_by_budget_tersedia" domain="[('budget_tersedia','=','')]" />
+                    <filter string="Estimasi kebutuhan budget" name="filter_by_estimasi_kebutuhan_budget" domain="[('estimasi_kebutuhan_budget','=','')]" />
+                    <filter string="Waktu penggunaan" name="filter_by_waktu_penggunaan" domain="[('waktu_penggunaan','=','')]" />
+                    <filter string="Distribusi penggunaan" name="filter_by_distribusi_penggunaan" domain="[('distribusi_penggunaan','=','')]" />
+                    <filter string="Posisi persediaan" name="filter_by_posisi_persediaan" domain="[('posisi_persediaan','=','')]" />
+                    <filter string="Diajukan tanggal" name="filter_by_diajukan_tanggal" domain="[('diajukan_tanggal','=','')]" />
+                    <filter string="Diketahui tanggal" name="filter_by_diketahui_tanggal" domain="[('diketahui_tanggal','=','')]" />
+                    <filter string="Disetujui tanggal" name="filter_by_disetujui_tanggal" domain="[('disetujui_tanggal','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="date" select="True"/>
+                    <field name="no_sop" select="True"/>
+                    <field name="revisi_ke" select="True"/>
+                    <field name="no_urut_proses" select="True"/>
+                    <field name="kebutuhan" select="True"/>
+                    <field name="pr_date" select="True"/>
+                    <field name="nama_kegiatan" select="True"/>
+                    <field name="job_list" select="True"/>
+                    <field name="referensi_dokumen_penunjang" select="True"/>
+                    <field name="alasan_pertimbangan" select="True"/>
+                    <field name="spesifikasi_kebutuhan" select="True"/>
+                    <field name="jumlah_kebutuhan" select="True"/>
+                    <field name="budget_tersedia" select="True"/>
+                    <field name="estimasi_kebutuhan_budget" select="True"/>
+                    <field name="waktu_penggunaan" select="True"/>
+                    <field name="distribusi_penggunaan" select="True"/>
+                    <field name="posisi_persediaan" select="True"/>
+                    <field name="diajukan_tanggal" select="True"/>
+                    <field name="diketahui_tanggal" select="True"/>
+                    <field name="disetujui_tanggal" select="True"/>
+                    <field name="pr_id" select="True"/>
+                    <field name="responsible_id" select="True"/>
+                    <field name="coa_id" select="True"/>
+                    <field name="diajukan_oleh" select="True"/>
+                    <field name="diketahui_oleh" select="True"/>
+                    <field name="disetujui_oleh" select="True"/>
+                    <field name="company_id" select="True"/>
+                    <group string="Group By..">
+                        <filter string="Pr" domain="[]" name="group_by_pr_id" context="{'group_by':'pr_id'}"/>
+                        <filter string="Responsible" domain="[]" name="group_by_responsible_id" context="{'group_by':'responsible_id'}"/>
+                        <filter string="Coa" domain="[]" name="group_by_coa_id" context="{'group_by':'coa_id'}"/>
+                        <filter string="Diajukan oleh" domain="[]" name="group_by_diajukan_oleh" context="{'group_by':'diajukan_oleh'}"/>
+                        <filter string="Diketahui oleh" domain="[]" name="group_by_diketahui_oleh" context="{'group_by':'diketahui_oleh'}"/>
+                        <filter string="Disetujui oleh" domain="[]" name="group_by_disetujui_oleh" context="{'group_by':'disetujui_oleh'}"/>
+                        <filter string="Company" domain="[]" name="group_by_company_id" context="{'group_by':'company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_vit_justifikasi_kanban" model="ir.ui.view" >
+            <field name="name">vit_justifikasi</field>
+            <field name="model">vit.justifikasi</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="date" />
+                    <field name="no_sop" />
+                    <field name="revisi_ke" />
+                    <field name="no_urut_proses" />
+                    <field name="kebutuhan" />
+                    <field name="pr_date" />
+                    <field name="nama_kegiatan" />
+                    <field name="job_list" />
+                    <field name="referensi_dokumen_penunjang" />
+                    <field name="alasan_pertimbangan" />
+                    <field name="spesifikasi_kebutuhan" />
+                    <field name="jumlah_kebutuhan" />
+                    <field name="budget_tersedia" />
+                    <field name="estimasi_kebutuhan_budget" />
+                    <field name="waktu_penggunaan" />
+                    <field name="distribusi_penggunaan" />
+                    <field name="posisi_persediaan" />
+                    <field name="diajukan_tanggal" />
+                    <field name="diketahui_tanggal" />
+                    <field name="disetujui_tanggal" />
+                    <field name="pr_id" />
+                    <field name="responsible_id" />
+                    <field name="coa_id" />
+                    <field name="diajukan_oleh" />
+                    <field name="diketahui_oleh" />
+                    <field name="disetujui_oleh" />
+                    <field name="company_id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            Field1: <field name="name"></field>
+                                        </li>
+                                        <li>
+                                            Field2: <field name="name"></field>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <record id="view_vit_justifikasi_cal" model="ir.ui.view">
+            <field name="name">vit_justifikasi_cal</field>
+            <field name="model">vit.justifikasi</field>
+            <field name="arch" type="xml">
+                <calendar string="Justifikasi" date_start="disetujui_tanggal">
+                    <field name="name" />
+                </calendar>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_vit_justifikasi_graph" model="ir.ui.view">
+            <field name="name">vit_justifikasi</field>
+            <field name="model">vit.justifikasi</field>
+            <field name="arch" type="xml">
+                <graph string="Justifikasi" type="bar">
+                    <field name="pr_id"/>
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_vit_justifikasi" model="ir.actions.act_window">
+            <field name="name">Justifikasi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vit.justifikasi</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Justifikasi
+                </p><p>
+                Click the Create button to add a new Justifikasi
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_vit_justifikasi" name="Justifikasi" parent="vit_product_request_justifikasi_sub_menu" action="action_vit_justifikasi" sequence="20"/>
+    </data>
+</odoo>

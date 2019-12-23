@@ -1,0 +1,169 @@
+<odoo noupdate="1">
+
+        <report
+            id="product_request_report"
+            string="Product Request"
+            model="vit.product.request"
+            report_type="qweb-pdf"
+            file="vit_product_request.vit_product_request_report"
+            name="vit_product_request.vit_product_request_report"
+
+        />
+<!--  print_report_name="((object.name or 'Product Request').replace('/','_')+'.pdf')" -->
+        <template id="report_product_request_document">
+            <t t-foreach="docs" t-as="o">
+              <div class="page"><!-- Header -->
+                   <div class="left" style="integer : left; width:1000px;font-size:20px;" >
+                    <table cellpadding="1">
+                        <tr>
+                          <th class="text-left" style="border: none;" t-if="o.user_id.company_id.logo">
+                                  <img t-if="o.user_id.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.user_id.company_id.logo" style="max-height: 40px;"/>
+                          </th>
+<!--                           <th class="text-center" style="border: none;"><h1></h1></th> -->
+                          <th class="text-center" style="border: none;"><h1><b><t t-esc="o.user_id.company_id.name"/></b></h1></th>
+                        </tr>
+                      </table>
+
+                      <br/>
+
+                      <table style="width:100%;">
+                        <tr>
+                          <td  class="text-center" style="border: none; text-align: center;"><h2><b>PRODUCT REQUEST</b></h2></td>
+                        </tr>
+                        <tr>
+                          <td  class="text-center" style="border: none; text-align: center;"><h2><b><span t-field="o.name"/></b></h2></td>
+                        </tr>
+                      </table>
+
+                      <br/>
+                        <div class="row mt32 mb32">
+                            <div class="col-xs-2" t-if="o.date">
+                                <strong>Date:</strong>
+                                <p t-field="o.date"/>
+                            </div>
+                            <div class="col-xs-2" t-if="o.product_type">
+                                <strong>Category:</strong>
+                                <p t-field="o.product_type"/>
+                            </div>
+                            <div class="col-xs-3" t-if="o.user_id.name">
+                                <strong>Requester:</strong>
+                                <p t-field="o.user_id.name"/>
+                            </div>
+                            <div class="col-xs-3" t-if="o.department_id.name">
+                                <strong>Department:</strong>
+                                <p t-field="o.department_id.name"/>
+                            </div>
+                            <div class="col-xs-2" >
+                                <strong>Reference:</strong>
+                                <p t-field="o.reference"/>
+                            </div>
+                        </div>
+
+                      <br/>
+
+                    <table class="table table-condensed" >
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th class="text-right">Qty</th>
+                                <th class="text-right">UoM</th>
+                                <th class="text-right">Price</th>
+                                <th class="text-right">Sub Total</th>
+                                <th class="text-right">Required</th>
+                                <th class="text-right">Status</th>
+                            </tr>
+                       </thead>
+
+                       <tbody class="invoice_tbody" style="font-size:16px;">
+                            <tr t-foreach="o.product_request_line_ids" t-as="l">
+                                <td>
+                                   <span t-field="l.product_id.default_code"/>
+                                </td>
+                                <td>
+                                   <span t-field="l.name"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.product_qty" />
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.product_uom_id.name" />
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.unit_price" />
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.subtotal" />
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.date_required" />
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="l.state" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-bottom:1pt solid black;"></td>
+                                <td style="border-bottom:1pt solid black; font-size:20px"><b>Total</b></td>
+                                <td style="border-bottom:1pt solid black;" class="text-right">
+                                    <div style="font-size:18px"><b><t t-esc="'{:,}'.format(sum(l.product_qty for l in o.product_request_line_ids))"/></b></div>
+                                </td>
+                                <td style="border-bottom:1pt solid black;"></td>
+                                <td style="border-bottom:1pt solid black;"></td>
+                                <td class="text-right" style="border-bottom:1pt solid black;">
+                                    <div style="font-size:18px"><b><t t-esc="'{:,}'.format(sum(l.subtotal for l in o.product_request_line_ids))"/></b></div>
+                                </td>
+                                <td style="border-bottom:1pt solid black;"></td>
+                                <td style="border-bottom:1pt solid black;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+
+                    <table style="width:100%">
+                        <tr>
+                          <th class="text-center" style="width:30%;">Merchandiser,</th>
+                          <th style="width:30%;"></th>
+                          <th class="text-center" style="width:30%;">Supply Base,</th>
+                        </tr>
+                        <tr style="height:80px;">
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="text-center" style="width:30%;">(. . . . . . . . . . . . . . .)</th>
+                            <th style="width:30%;"></th>
+                            <th class="text-center" style="width:30%;">(. . . . . . . . . . . . . . .)</th>
+                        </tr>
+                    </table>
+                    </div>
+              </div>
+            </t>
+        </template>
+
+        <template id="vit_product_request_report">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="vit_product_request.report_product_request_document" t-lang="o.user_id.partner_id.lang"/>
+            </t>
+        </template>
+
+        <record id="paperformat_product_request" model="report.paperformat">
+            <field name="name">Product Request</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">5</field>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="product_request_report" model="ir.actions.report.xml">
+          <field name="paperformat_id" ref="vit_product_request.paperformat_product_request"/>
+        </record>
+
+</odoo>
+
+

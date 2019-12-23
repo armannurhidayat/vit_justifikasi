@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_picking_form_department" model="ir.ui.view">
+            <field name="name">view_picking_form_department</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <!-- Add your fields or attributes here -->
+                    <field name="department_id" options="{'no_create':True, 'no_open':True}" attrs="{'readonly':[('state','in',('cancel','done'))]}"/>
+                    <field name="request_id" options="{'no_create':True, 'no_open':True}" attrs="{'readonly':[('state','in',('cancel','done'))]}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="vpicktree_dept" model="ir.ui.view">
+            <field name="name">vpicktree_dept</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <!-- Add new fields here -->
+                    <field name="department_id" options="{'no_create':True, 'no_open':True}" attrs="{'readonly':[('state','in',('cancel','done'))]}"/>
+                    <field name="request_id" options="{'no_create':True, 'no_open':True}" attrs="{'readonly':[('state','in',('cancel','done'))]}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="view_picking_internal_search_dept" model="ir.ui.view">
+            <field name="name">view_picking_internal_search_dept</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <search position="inside">
+                    <field name="department_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Department" icon="terp-camera_test"
+                                name="group_by_department_id" context="{'group_by':'department_id'}"/>
+                        <filter string="Source Location" icon="terp-camera_test"
+                                name="group_by_location_id" context="{'group_by':'location_id'}"/>
+                        <filter string="Destination Location" icon="terp-camera_test"
+                                name="group_by_location_dest_id" context="{'group_by':'location_dest_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+</data>
+</odoo>

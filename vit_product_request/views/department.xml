@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="view_department_form_wh" model="ir.ui.view">
+            <field name="name">view_department_form_wh</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="warehouse_id" options="{'no_create':True,'no_open':True}}"/>
+                </field>
+
+            </field>
+        </record>
+</data>
+</odoo>

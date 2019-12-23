@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_vit_justifikasi_menu" string="Vit - Justifikasi"
+         model="vit.justifikasi" report_type="qweb-pdf" 
+         file="vit.justifikasi"  name="vit_product_request_justifikasi.vit_justifikasi_report" />
+
+        <!-- document template -->
+        <template id="vit_product_request_justifikasi.vit_justifikasi_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Justifikasi: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Date</strong>
+                            <p class="m-0" t-field="doc.date" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>No sop</strong>
+                            <p class="m-0" t-field="doc.no_sop" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Revisi ke</strong>
+                            <p class="m-0" t-field="doc.revisi_ke" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>No urut proses</strong>
+                            <p class="m-0" t-field="doc.no_urut_proses" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Kebutuhan</strong>
+                            <p class="m-0" t-field="doc.kebutuhan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Pr date</strong>
+                            <p class="m-0" t-field="doc.pr_date" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Nama kegiatan</strong>
+                            <p class="m-0" t-field="doc.nama_kegiatan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Job list</strong>
+                            <p class="m-0" t-field="doc.job_list" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Referensi dokumen penunjang</strong>
+                            <p class="m-0" t-field="doc.referensi_dokumen_penunjang" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Alasan pertimbangan</strong>
+                            <p class="m-0" t-field="doc.alasan_pertimbangan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Spesifikasi kebutuhan</strong>
+                            <p class="m-0" t-field="doc.spesifikasi_kebutuhan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Jumlah kebutuhan</strong>
+                            <p class="m-0" t-field="doc.jumlah_kebutuhan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Budget tersedia</strong>
+                            <p class="m-0" t-field="doc.budget_tersedia" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Estimasi kebutuhan budget</strong>
+                            <p class="m-0" t-field="doc.estimasi_kebutuhan_budget" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Waktu penggunaan</strong>
+                            <p class="m-0" t-field="doc.waktu_penggunaan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Distribusi penggunaan</strong>
+                            <p class="m-0" t-field="doc.distribusi_penggunaan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Posisi persediaan</strong>
+                            <p class="m-0" t-field="doc.posisi_persediaan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Diajukan tanggal</strong>
+                            <p class="m-0" t-field="doc.diajukan_tanggal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Diketahui tanggal</strong>
+                            <p class="m-0" t-field="doc.diketahui_tanggal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Disetujui tanggal</strong>
+                            <p class="m-0" t-field="doc.disetujui_tanggal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Pr</strong>
+                            <p class="m-0" t-field="doc.pr_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Responsible</strong>
+                            <p class="m-0" t-field="doc.responsible_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Coa</strong>
+                            <p class="m-0" t-field="doc.coa_id"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Diajukan oleh</strong>
+                            <p class="m-0" t-field="doc.diajukan_oleh"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Diketahui oleh</strong>
+                            <p class="m-0" t-field="doc.diketahui_oleh"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Disetujui oleh</strong>
+                            <p class="m-0" t-field="doc.disetujui_oleh"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Company</strong>
+                            <p class="m-0" t-field="doc.company_id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="vit_product_request_justifikasi.vit_justifikasi_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="vit_product_request_justifikasi.vit_justifikasi_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

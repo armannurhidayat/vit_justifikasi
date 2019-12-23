@@ -1,0 +1,6 @@
+<odoo>
+	<data>
+		<menuitem id="vit_product_request_justifikasi_top_menu" name="Vit product request justifikasi" sequence="20" web_icon="vit_product_request_justifikasi,static/description/icon.png" />
+		<menuitem id="vit_product_request_justifikasi_sub_menu" name="Vit product request justifikasi" sequence="40" parent="vit_product_request_justifikasi_top_menu" web_icon="vit_product_request_justifikasi,static/description/icon.png" />
+	</data>
+</odoo>
