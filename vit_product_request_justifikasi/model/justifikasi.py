@@ -39,20 +39,20 @@ class justifikasi(models.Model):
 
 
 
-
-
-
 	@api.multi
 	def create_purchase_requisition(self):
+		# action dari menu / model ir.actions.act_window
 		action = self.env.ref('vit_product_request.action_product_request')
 		result = action.read()[0]
+
+		# create_purchase_requisition == Isset False
 		create_purchase_requisition = self.env.context.get('create_purchase_requisition', False)
 		
-		print(create_purchase_requisition)
 		result['context'] = {
 			'default_referece_name': self.name,
 		}
 
+		# pr_id dari id yang berhubungan dengan model vit.product.request
 		if len(self.pr_id) > 1 and not create_purchase_requisition:
 			result['domain'] = "[('id', 'in', " + str(self.pr_id.id) + ")]"
 		else:
@@ -65,5 +65,5 @@ class justifikasi(models.Model):
 				result['views'] = form_view
 			if not create_purchase_requisition:
 				result['res_id'] = self.pr_id.id or False
-		result['context']['default_reference'] = self.name
+		result['context']['default_reference'] = self.name # field yang akan di isi otomatis
 		return result
