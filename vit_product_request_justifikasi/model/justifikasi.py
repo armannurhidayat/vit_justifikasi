@@ -64,6 +64,6 @@ class justifikasi(models.Model):
 			else:
 				result['views'] = form_view
 			if not create_purchase_requisition:
-				result['res_id'] = self.pr_id.id or False
+				result['res_id'] = self.pr_id.id or False # result['res_id'] variable id yang berhubungan
 		result['context']['default_reference'] = self.name # field yang akan di isi otomatis
 		return result
